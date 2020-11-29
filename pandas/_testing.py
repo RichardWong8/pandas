@@ -1410,7 +1410,7 @@ def assert_series_equal(
             check_dtype=check_dtype,
             index_values=np.asarray(left.index),
         )
-    elif needs_i8_conversion(left.dtype) or needs_i8_conversion(right.dtype):
+    elif needs_i8_conversion(left.dtype) and needs_i8_conversion(right.dtype):
         # DatetimeArray or TimedeltaArray
         assert_extension_array_equal(
             left._values,
